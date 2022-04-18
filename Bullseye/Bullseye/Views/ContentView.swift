@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var alertIsVisible: Bool = false
-    @State private var sliderValue: Double = 50.0
-    @State private var game: Game = Game()
+    @State private var alertIsVisible = false
+    @State private var sliderValue = 50.0
+    @State private var game = Game()
     
     var body: some View {
         VStack {
@@ -36,7 +36,7 @@ struct ContentView: View {
                     .fontWeight(.bold)
             }
             Button(action: {
-                self.alertIsVisible
+                alertIsVisible
                  = true
             }) {
                 Text("Hit me")
@@ -44,8 +44,8 @@ struct ContentView: View {
             .alert("Hello there!", isPresented: $alertIsVisible) {
               Button("Awesome!") { }
             } message: {
-                var roundedValue: Int = Int(self.sliderValue.rounded())
-                Text("The slider value is  \(roundedValue). \n" + "You scored \(self.game.points(sliderValue: roundedValue)) points this round.")
+                let roundedValue = Int(sliderValue.rounded())
+                Text("The slider value is  \(roundedValue). \n" + "You scored \(game.points(sliderValue: roundedValue)) points this round.")
             }
         }
     }
