@@ -15,13 +15,13 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color("BackgroudColor")
-                .edgesIgnoringSafeArea(.all)
+            BackgroundView(game: $game)
             VStack {
                InstructionsView(game: $game)
                SliderView(sliderValue: $sliderValue)
                HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
-            }}
+            }
+        }
     }
 
 struct InstructionsView: View {
@@ -34,9 +34,8 @@ struct InstructionsView: View {
              .padding(.leading, 30.0)
              .padding(.trailing, 30.0)
         BigNumberText(text: String(game.target))
-            
-            
-        } }
+        }
+    }
 }
 
 struct SliderView: View {
